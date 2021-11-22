@@ -12,9 +12,17 @@ public class WebServiceUser {
 
     /**
      * This is a sample web service operation
+     * @param nomU
+     * @param passU
+     * @return 
      */
     @WebMethod(operationName = "login")
-    public Boolean login(@WebParam(name = "name") User usuario) {
+    public Boolean login(@WebParam(name = "nameU") String nomU, @WebParam(name = "passU") String passU) {
+        
+        User usuario = new User();
+        
+        usuario.setNom(nomU);
+        usuario.setPass(passU);
         
         UserDAO sqlSentencias = new UserDAO();
         
@@ -23,7 +31,12 @@ public class WebServiceUser {
     
     
     @WebMethod(operationName = "insert")
-    public Boolean insert(@WebParam(name = "name") User usuario) {
+    public Boolean insert(@WebParam(name = "nameU") String nomU, @WebParam(name = "passU") String passU) {
+        
+        User usuario = new User();
+        
+        usuario.setNom(nomU);
+        usuario.setPass(passU);
         
         UserDAO sqlSentencias = new UserDAO();
         
@@ -33,7 +46,13 @@ public class WebServiceUser {
     
     
     @WebMethod(operationName = "update")
-    public Boolean update(@WebParam(name = "name") User usuario) {
+    public Boolean update(@WebParam(name = "idU") int id, @WebParam(name = "nameU") String nomU, @WebParam(name = "passU") String passU) {
+        
+        User usuario = new User();
+        
+        usuario.setId(id);
+        usuario.setNom(nomU);
+        usuario.setPass(passU);
         
         UserDAO sqlSentencias = new UserDAO();
         
@@ -52,7 +71,7 @@ public class WebServiceUser {
     
     
     @WebMethod(operationName = "delete")
-    public Boolean delete(@WebParam(name = "name") int id) {
+    public Boolean delete(@WebParam(name = "idU") int id) {
         
         UserDAO sqlSentencias = new UserDAO();
         
