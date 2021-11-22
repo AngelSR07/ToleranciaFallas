@@ -17,7 +17,7 @@ public class WebServiceUser {
      * @return 
      */
     @WebMethod(operationName = "login")
-    public Boolean login(@WebParam(name = "nameU") String nomU, @WebParam(name = "passU") String passU) {
+    public String login(@WebParam(name = "nameU") String nomU, @WebParam(name = "passU") String passU) {
         
         User usuario = new User();
         
@@ -26,7 +26,13 @@ public class WebServiceUser {
         
         UserDAO sqlSentencias = new UserDAO();
         
-        return sqlSentencias.login(usuario);
+        boolean logueoExitoso = sqlSentencias.login(usuario);
+        
+        if(logueoExitoso){
+            return "Bienvenido";
+        } else {
+            return "No bienvenido";
+        }
     }
     
     
